@@ -1,0 +1,53 @@
+{
+  "name": "true-bot",
+  "version": "1.0.1",
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
+  },
+  "description": "Official True Bot source code.",
+  "main": "bot.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "dev": "nodemon bot.js",
+    "lint": "eslint src",
+    "start": "node bot.js",
+    "format": "prettier --write src/**/*.js",
+    "test": "npm run lint && npm run start"
+  },
+  "author": "Sal Code",
+  "contributors": [
+    "Sal Code - sal-code@truebot.xyz",
+    "Thasun05 - santi-senpai@truebot.xyz"
+  ],
+  "license": "Apache 2.0",
+  "keywords": [
+    "discord",
+    "bot",
+    "node",
+    "discordjs"
+  ],
+  "bugs": {
+    "url": "https://github.com/True-Team/True-Bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/True-Team/True-Bot"
+  },
+  "homepage": "https://truebot.xyz",
+  "dependencies": {
+    "@supercharge/strings": "^1.22.0",
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14",
+    "reddit.images": "^1.0.5",
+    "wikipedia": "^1.1.6",
+    "wokcommands": "^1.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "prettier": "^2.5.0"
+  }
+}

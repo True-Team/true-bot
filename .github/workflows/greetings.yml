@@ -1,0 +1,16 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: 'Welcome to the True Community. We are very glad to see you here helping us maintain the True project. Congratulations, you have created your first Issue. We thank you for having found and reported something wrong. 😉Fell free to explore the community.'
+          pr-message: 'Welcome to the True Community. We are very glad to see you here helping us maintain the True project. Congratulations, you have created your first Pull request. We thank you for your active collaboration in the project. 😉Fell free to explore the community.'
