@@ -42,7 +42,7 @@
     "dotenv": "^10.0.0",
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.14",
-    "reddit.images": "^1.0.5",
+    "reddit-image-fetcher": "^2.0.9",
     "wikipedia": "^1.1.6",
     "wokcommands": "^1.5.3"
   },
