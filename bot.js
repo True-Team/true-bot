@@ -42,6 +42,10 @@ client.on('ready', async (bot) => {
       name: 'APIs',
       emoji: '🐛',
     },
+    {
+      name: 'Music',
+      emoji: '🎶',
+    },
   ]);
 
   bot.user.setActivity('The new True Bot', { type: 'WATCHING' });
@@ -61,7 +65,7 @@ client.on('guildCreate', async (guild) => {
 });
 
 client.on('guildMemberAdd', async (member) => {
-  Collection.findOne({ _id: memebr.guild.id }, async function (error, data) {
+  Collection.findOne({ _id: member.guild.id }, async function (error, data) {
     if (error) {
       console.error(error);
     } else {
@@ -79,7 +83,7 @@ client.on('guildMemberAdd', async (member) => {
 });
 
 client.on('guildMemberRemove', async (member) => {
-  Collection.findOne({ _id: memebr.guild.id }, async function (error, data) {
+  Collection.findOne({ _id: member.guild.id }, async function (error, data) {
     if (error) {
       console.error(error);
     } else {
