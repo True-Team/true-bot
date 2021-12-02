@@ -8,7 +8,6 @@ module.exports = {
   category: 'APIs',
   description: '😂Sends a random meme from Reddit',
   slash: true,
-  testOnly: true,
 
   callback: async ({ interaction }) => {
     try {
