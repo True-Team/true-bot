@@ -24,14 +24,15 @@ async function createTriviaEmbed(interaction, name, value) {
   }
 
   const Embed = new MessageEmbed()
-    .setAuthor(interaction.user.tag, interaction.user.avatarURL)
+    .setAuthor(interaction.user.tag, interaction.user.avatarURL())
+    .setColor('RANDOM')
+    .setThumbnail(interaction.user.avatarURL())
     .setTimestamp()
-
-    .setFooter(`Invoked by ${interaction.user.username}`)
-    .addFields({
-      name: name,
-      value: realValue,
-    });
+    .setFooter(
+      `Invoked by ${interaction.user.username}`,
+      interaction.user.avatarURL()
+    )
+    .addField(name, realValue, false);
 
   return Embed;
 }

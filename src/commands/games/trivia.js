@@ -42,7 +42,9 @@ module.exports = {
           data.answer
         );
 
-        await interaction.reply({ content: 'Test', embeds: [Embed] });
+        console.log(Embed);
+
+        await interaction.reply({ embeds: [Embed] });
       })
       .catch(async function (error) {
         console.log(error);
