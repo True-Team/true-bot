@@ -12,6 +12,7 @@
 <br>
 <br>
 
+[![CircleCI](https://circleci.com/gh/True-Team/True-Bot/tree/main.svg?style=svg)](https://circleci.com/gh/True-Team/True-Bot/tree/main)
 <a href="https://github.com/True-Team/True-Bot/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/True-Team/True-Bot"></a>
 <a href="https://github.com/True-Team/True-Bot/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/True-Team/True-Bot"></a>
 <a href="https://github.com/True-Team/True-Bot/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/True-Team/True-Bot"></a>

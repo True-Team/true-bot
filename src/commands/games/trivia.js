@@ -1,5 +1,6 @@
 const axios = require('axios');
 const createTriviaEmbed = require('../../functions/generateEmbed');
+const ExternalAPIError = require('../../errors/APIErrors');
 
 module.exports = {
   name: 'trivia',
@@ -36,15 +37,13 @@ module.exports = {
       .then(async function (response) {
         const data = response.data[0];
 
-        const Embed = createTriviaEmbed(
-          interaction,
-          data.question,
-          data.answer
-        );
-
-        console.log(Embed);
-
-        await interaction.reply({ embeds: [Embed] });
+        createTriviaEmbed(interaction, data.question, data.answer)
+          .then(async function (data) {
+            await interaction.reply({ embeds: [data] });
+          })
+          .catch(async function (error) {
+            ExternalAPIError(interaction);
+          });
       })
       .catch(async function (error) {
         console.log(error);

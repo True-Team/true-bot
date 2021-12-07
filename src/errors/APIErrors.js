@@ -1,4 +1,3 @@
-/* ========== DATABASE ERROR HANDLING ========== */
 const {
   MessageActionRow,
   MessageButton,
@@ -6,11 +5,11 @@ const {
 } = require('discord.js');
 
 /**
- * Function for handling a missed Database connection
+ * Function for handling general APIs errors
  * @param {CommandInteraction} interaction
  */
 
-async function MissingDatabaseConnection(interaction) {
+async function ExternalAPIError(interaction) {
   //Buttons for website redirects
   const row = new MessageActionRow().addComponents(
     new MessageButton()
@@ -25,10 +24,10 @@ async function MissingDatabaseConnection(interaction) {
   );
 
   return await interaction.reply({
-    content: `${interaction.user} unable to connect to the database, please try again later.\n**If you see this message more than 5 times, please consider visiting our website or reporting the problem.**`,
+    content: `${interaction.user} there was an error while trying to communicate with the API.\n**If you see this message more than 5 times, please consider visiting our website or reporting the problem.**`,
     ephemeral: true,
     components: [row],
   });
 }
 
-module.exports = MissingDatabaseConnection;
+module.exports = ExternalAPIError;
