@@ -1,6 +1,7 @@
 const axios = require('axios');
-const createTriviaEmbed = require('../../functions/generateEmbed');
+const createTriviaEmbed = require('../../functions/generateTriviaEmbed');
 const ExternalAPIError = require('../../errors/APIErrors');
+const GetErrorDetails = require('../../errors/errorDetails');
 
 module.exports = {
   name: 'trivia',
@@ -43,6 +44,7 @@ module.exports = {
           })
           .catch(async function (error) {
             ExternalAPIError(interaction);
+            GetErrorDetails(interaction, error);
           });
       })
       .catch(async function (error) {

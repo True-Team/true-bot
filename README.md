@@ -17,7 +17,6 @@
 <a href="https://github.com/True-Team/True-Bot/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/True-Team/True-Bot"></a>
 <a href="https://github.com/True-Team/True-Bot/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/True-Team/True-Bot"></a>
 <a href="https://github.com/True-Team/True-Bot/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/True-Team/True-Bot"></a>
-<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FTrue-Team%2FTrue-Bot?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FTrue-Team%2FTrue-Bot.svg?type=shield"/></a>
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y04GBML)
 
@@ -99,6 +98,3 @@ npm run dev
         guarantee
         of greater security, protection and privacy and for the expenses of sustaining the domain.<br><br>🧡Thanks to everyone<br><em>From Sal Code and the Team</em></p>
 </section>
-
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FTrue-Team%2FTrue-Bot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FTrue-Team%2FTrue-Bot?ref=badge_large)
