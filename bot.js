@@ -22,9 +22,11 @@ const client = new DiscordJS.Client({
 client.on('ready', async (bot) => {
   console.log(`Logged in as ${bot.user.tag}`);
 
-  const wok = new WOKCommands(client, {
+  new WOKCommands(client, {
     commandsDir: path.join(__dirname, './src/commands'),
+    featuresDir: path.join(__dirname, './src/events'),
     testServers: ['906969919260876810'],
+    mongoUri: process.env.MONGO_URI,
   }).setCategorySettings([
     {
       name: 'Moderation',
@@ -62,42 +64,6 @@ client.on('guildCreate', async (guild) => {
     muteRole: '',
     loggingChannel: '',
   }).save();
-});
-
-client.on('guildMemberAdd', async (member) => {
-  Collection.findOne({ _id: member.guild.id }, async function (error, data) {
-    if (error) {
-      console.error(error);
-    } else {
-      try {
-        const loggingChannel = member.guild.cache.get(
-          String(data.loggingChannel).slice(2, 20)
-        );
-
-        await loggingChannel.send(`The user ${member} has joined the guild`);
-      } catch (e) {
-        return null;
-      }
-    }
-  });
-});
-
-client.on('guildMemberRemove', async (member) => {
-  Collection.findOne({ _id: member.guild.id }, async function (error, data) {
-    if (error) {
-      console.error(error);
-    } else {
-      try {
-        const loggingChannel = member.guild.cache.get(
-          String(data.loggingChannel).slice(2, 20)
-        );
-
-        await loggingChannel.send(`The user ${member} has left the guild`);
-      } catch (e) {
-        return null;
-      }
-    }
-  });
 });
 
 client.on('guildDelete', async (guild) => {
