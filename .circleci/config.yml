@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@4.7
-  gg-shield: gitguardian/ggshield
+  ggshield: gitguardian/ggshield
 
 workflows:
   sample:
@@ -9,7 +9,7 @@ workflows:
       - node/test:
           version: '16.13'
           pkg-manager: npm
-      - gg-shield/scan:
-          name: gg-shield-scan
+      - ggshield/scan:
+          name: ggshield-scan
           base_revision: << pipeline.git.base_revision >>
           revision: <<pipeline.git.revision>>
