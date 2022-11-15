@@ -41,7 +41,7 @@
     "@supercharge/strings": "^1.22.0",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "mongoose": "^6.0.14",
+    "mongoose": "^6.4.6",
     "nodemon": "^2.0.14",
     "reddit-image-fetcher": "^2.0.9",
     "wikipedia": "^1.1.6",
