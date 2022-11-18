@@ -7,7 +7,6 @@ module.exports = {
   category: 'Utility',
   description: '🧹Deletes some messages in a text channel',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'amount',

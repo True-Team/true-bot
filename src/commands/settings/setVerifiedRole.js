@@ -10,7 +10,6 @@ module.exports = {
   category: 'Settings',
   description: '🙋‍♂️Sets the role for verified users',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'role',

@@ -9,7 +9,6 @@ module.exports = {
   category: 'Settings',
   description: '🔧Adds the logging system',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     //Creating the channel

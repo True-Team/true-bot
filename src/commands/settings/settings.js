@@ -2,7 +2,7 @@
 // The settings command will show the user
 // all the settings of the guild with their
 // values
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js');
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
 const MissingDatabaseConnection = require('../../errors/dbErrors');
@@ -14,17 +14,19 @@ module.exports = {
   category: 'Settings',
   description: "🚧Get the True's current guild's preferences and settings",
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     async function main(guild) {
       //Creating the Embeds to display the settings for the guild
-      const Embed = new MessageEmbed()
-        .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-        .setColor('ORANGE')
+      const Embed = new EmbedBuilder()
+        .setAuthor({
+          name: interaction.user.tag,
+          iconURL: interaction.user.avatarURL(),
+        })
+        .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields(
           {
             name: `🔐${interaction.guild.name} Settings`,
@@ -48,9 +50,12 @@ module.exports = {
           }
         );
 
-      const Embed2 = new MessageEmbed()
-        .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-        .setColor('ORANGE')
+      const Embed2 = new EmbedBuilder()
+        .setAuthor({
+          name: interaction.user.tag,
+          iconURL: interaction.user.avatarURL(),
+        })
+        .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
         .setFooter(`Invoked by ${interaction.user.tag}`)
@@ -78,9 +83,12 @@ module.exports = {
           }
         );
 
-      const Embed3 = new MessageEmbed()
-        .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-        .setColor('ORANGE')
+      const Embed3 = new EmbedBuilder()
+        .setAuthor({
+          name: interaction.user.tag,
+          iconURL: interaction.user.avatarURL(),
+        })
+        .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
         .setFooter(`Invoked by ${interaction.user.tag}`)
@@ -106,9 +114,12 @@ module.exports = {
           }
         );
 
-      const Embed4 = new MessageEmbed()
-        .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-        .setColor('ORANGE')
+      const Embed4 = new EmbedBuilder()
+        .setAuthor({
+          name: interaction.user.tag,
+          iconURL: interaction.user.avatarURL(),
+        })
+        .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
         .setFooter(`Invoked by ${interaction.user.tag}`)
@@ -135,9 +146,12 @@ module.exports = {
           }
         );
 
-      const Embed5 = new MessageEmbed()
-        .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-        .setColor('ORANGE')
+      const Embed5 = new EmbedBuilder()
+        .setAuthor({
+          name: interaction.user.tag,
+          iconURL: interaction.user.avatarURL(),
+        })
+        .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
         .setFooter(`Invoked by ${interaction.user.tag}`)
@@ -164,10 +178,10 @@ module.exports = {
           }
         );
 
-      const row = new MessageActionRow().addComponents(
-        new MessageButton()
+      const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
           .setLabel('▶')
-          .setStyle('PRIMARY')
+          .setStyle('Primary')
           .setCustomId('go-ahead-button')
       );
 

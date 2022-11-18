@@ -1,7 +1,7 @@
 /* ========== USER INFO COMMAND ========== */
 // The command will return some useful informations
 // about the user you've selected
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'whois',
@@ -21,14 +21,14 @@ module.exports = {
     const user = interaction.options.getUser('user');
     const member = interaction.guild.members.resolve(user);
 
-    const Embed = new MessageEmbed()
+    const Embed = new EmbedBuilder()
       .setColor('#ff4500')
       .setThumbnail(user.avatarURL())
-      .setAuthor(user.tag, user.avatarURL())
+      .setAuthor({ name: user.tag, iconURL: user.avatarURL() })
       .setTimestamp()
-      .setFooter(
-        `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+      .setFooter({
+        text: `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .addFields(
         {
           name: `📋User Informations`,

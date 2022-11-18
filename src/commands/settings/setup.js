@@ -1,7 +1,7 @@
 /* ========== SETUP COMMAND ========== */
 // Resets the guild settings query to default
 // parameters and values in the database.
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { EmbedBuilder, MessageActionRow, MessageButton } = require('discord.js');
 
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
@@ -13,7 +13,6 @@ module.exports = {
   category: 'Settings',
   description: '🧮Creates the setup for the server in the Database',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     await new Collection({
@@ -27,16 +26,16 @@ module.exports = {
       loggingChannel: '',
     }).save();
 
-    const Embed = new MessageEmbed()
+    const Embed = new EmbedBuilder()
       .setColor('#228b22')
       .setTimestamp()
-      .setFooter(`Invoked by ${interaction.user.tag}`)
+      .setFooter({ text: `Invoked by ${interaction.user.tag}` })
       .setThumbnail(interaction.user.avatarURL())
-      .addField(
-        '✅ Guild setup completed successfully',
-        `${interaction.user} the guild has now been inserted in our system. You can now start customizing True. Use the link provided down below to learn more about this.`,
-        true
-      );
+      .addFields({
+        name: '✅ Guild setup completed successfully',
+        value: `${interaction.user} the guild has now been inserted in our system. You can now start customizing True. Use the link provided down below to learn more about this.`,
+        inline: true,
+      });
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()

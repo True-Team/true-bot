@@ -1,7 +1,7 @@
 /* ========== WIKIPEDIA API ========== */
 // The integration will create a summary of a wikipedia
 // page, basd on what you've searched.
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const wiki = require('wikipedia');
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
     try {
       const result = await wiki.summary(interaction.options.getString('text'));
 
-      const Embed = new MessageEmbed()
+      const Embed = new EmbedBuilder()
         .setColor('RANDOM')
         .setTimestamp()
         .setThumbnail(interaction.user.avatarURL())

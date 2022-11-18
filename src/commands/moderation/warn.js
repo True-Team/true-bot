@@ -5,7 +5,6 @@ module.exports = {
   category: 'Moderation',
   description: '📢Use this command to unmute a user',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'user',

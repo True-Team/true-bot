@@ -1,6 +1,6 @@
 /* ========== HELP COMMAND ========== */
 // A simple help command for True bot
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder } = require('discord.js');
 
 module.exports = {
   name: 'help',
@@ -9,23 +9,23 @@ module.exports = {
   slash: true,
 
   callback: async ({ interaction }) => {
-    const websiteButton = new MessageActionRow().addComponents(
-      new MessageButton()
+    const websiteButton = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel('Website')
-        .setStyle('LINK')
+        .setStyle('Link')
         .setURL('https://truebot.xyz')
     );
-    const learnButton = new MessageActionRow().addComponents(
-      new MessageButton()
+    const learnButton = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel('Learning Platform')
-        .setStyle('LINK')
+        .setStyle('Link')
         .setURL('https://learn.truebot.xyz')
     );
 
-    const statusPage = new MessageActionRow().addComponents(
-      new MessageButton()
+    const statusPage = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel('Status Page')
-        .setStyle('LINK')
+        .setStyle('Link')
         .setURL('https://status.truebot.xyz')
     );
 

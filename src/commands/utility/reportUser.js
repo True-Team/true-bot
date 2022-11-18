@@ -5,7 +5,7 @@
 // the server owner DM
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const MissingDatabaseConnection = require('../../errors/dbErrors');
 
 mongoose.connect(process.env.MONGO_URI);
@@ -45,16 +45,20 @@ module.exports = {
           String(guild.loggingChannel).slice(2, 20)
         );
 
-        const Embed = new MessageEmbed()
-          .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-          .setColor('ORANGE')
+        const Embed = new EmbedBuilder()
+          .setAuthor({
+            name: interaction.user.tag,
+            iconURL: interaction.user.avatarURL(),
+          })
+          .setColor('Orange')
           .setTimestamp()
           .setThumbnail(interaction.guild.iconURL())
-          .setFooter(`Invoked by ${interaction.user.tag}`)
-          .addField(
-            '❗User report case',
-            `The user ${user} has been reported top moderators with the following reason:\n${reason}`
-          );
+          .setFooter({ text: `Invoked by ${interaction.user.tag}` })
+          .addFields({
+            name: '❗User report case',
+            value: `The user ${user} has been reported top moderators with the following reason:\n${reason}`,
+            inline: true,
+          });
 
         await channel.send({ embeds: [Embed] });
 
@@ -67,15 +71,19 @@ module.exports = {
         const owner = interaction.guild.members.cache.get(parseInt(ownerID));
 
         const Embed = new MessageEmbed()
-          .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-          .setColor('ORANGE')
+          .setAuthor({
+            name: interaction.user.tag,
+            iconURL: interaction.user.avatarURL(),
+          })
+          .setColor('Orange')
           .setTimestamp()
           .setThumbnail(interaction.guild.iconURL())
-          .setFooter(`Invoked by ${interaction.user.tag}`)
-          .addField(
-            '❗User report case',
-            `The user ${user} has been reported top moderators with the following reason:\n${reason}`
-          );
+          .setFooter({ text: `Invoked by ${interaction.user.tag}` })
+          .addFields({
+            name: '❗User report case',
+            value: `The user ${user} has been reported top moderators with the following reason:\n${reason}`,
+            inline: true,
+          });
 
         await owner.send({ embeds: [Embed] });
 

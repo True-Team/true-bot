@@ -1,14 +1,13 @@
 /* ========== UNLOCK COMMAND ========== */
 // The command will unlock the permissions of
 // a previously locked channel
-const { Permissions } = require('discord.js');
+const { PermissionsBitField } = require('discord.js');
 
 module.exports = {
   name: 'unlock',
   category: 'Utility',
   description: '🔓Unlocks a previously locked channel',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     //Unlocking the channel permissions
@@ -16,15 +15,15 @@ module.exports = {
       {
         id: interaction.guild.roles.everyone.id,
         allow: [
-          Permissions.FLAGS.SEND_MESSAGES,
-          Permissions.FLAGS.STREAM,
-          Permissions.FLAGS.VIEW_CHANNEL,
-          Permissions.FLAGS.EMBED_LINKS,
-          Permissions.FLAGS.READ_MESSAGE_HISTORY,
-          Permissions.FLAGS.ADD_REACTIONS,
-          Permissions.FLAGS.SEND_TTS_MESSAGES,
-          Permissions.FLAGS.ATTACH_FILES,
-          Permissions.FLAGS.USE_APPLICATION_COMMANDS,
+          PermissionsBitField.Flags.SendMessages,
+          PermissionsBitField.Flags.Stream,
+          PermissionsBitField.Flags.ViewChannel,
+          PermissionsBitField.Flags.EmbedLinks,
+          PermissionsBitField.Flags.ReadMessageHistory,
+          PermissionsBitField.Flags.AddReactions,
+          PermissionsBitField.Flags.SendTTSMessages,
+          PermissionsBitField.Flags.AttachFiles,
+          PermissionsBitField.Flags.UseApplicationCommands,
         ],
       },
     ]);

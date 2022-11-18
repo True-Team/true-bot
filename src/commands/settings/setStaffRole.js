@@ -11,7 +11,6 @@ module.exports = {
   description:
     '👮‍♂️Sets the role that True will recognise as Staff role (Moderators, Admins...)',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'role',

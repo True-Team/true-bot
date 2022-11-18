@@ -10,7 +10,6 @@ module.exports = {
   category: 'Settings',
   description: '🔧Adds the verification system',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     await interaction.guild.channels.create('✅verify', {

@@ -1,4 +1,4 @@
-const { MessageEmbed, CommandInteraction } = require('discord.js');
+const { EmbedBuilder, CommandInteraction } = require('discord.js');
 
 /**
  * Utility function for creating Embeds in a easy in fast way
@@ -9,7 +9,7 @@ const { MessageEmbed, CommandInteraction } = require('discord.js');
  */
 
 async function createEmbed(interaction, name, value) {
-  const Embed = new MessageEmbed()
+  const Embed = new EmbedBuilder()
     .setAuthor(interaction.user.tag, interaction.user.avatarURL())
     .setColor('RANDOM')
     .setThumbnail(interaction.user.avatarURL())

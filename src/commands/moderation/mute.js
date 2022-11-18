@@ -1,6 +1,6 @@
 /* ========== MUTE COMMAND ========== */
 // The command will kick a user from the guild
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
 
@@ -11,7 +11,6 @@ module.exports = {
   category: 'Moderation',
   description: '🔇Use this command to mute a user',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'user',
@@ -37,25 +36,25 @@ module.exports = {
     const colors = ['#008000', '#00ff00', '#32cd32', '#00a550'];
     let color = colors[Math.floor(Math.random() * 4)];
 
-    const Embed = new MessageEmbed()
+    const Embed = new EmbedBuilder()
       .setColor(color)
-      .setAuthor(
-        `Moderator: ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+      .setAuthor({
+        name: `Moderator: ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .setThumbnail(interaction.options.getUser('user').avatarURL())
-      .setFooter(
-        `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+      .setFooter({
+        text: `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .setTimestamp()
-      .addField(
-        'User mute case',
-        `The user **${
+      .addFields({
+        name: 'User mute case',
+        value: `The user **${
           interaction.options.getUser('user').username
         }** has been muted with the following reason:\n**${
           interaction.options.getString('reason') || 'No reason provided'
         }**`,
-        true
-      );
+        inline: true,
+      });
 
     //Getting mute time from interaction options and
     //Calculating the time in minutes

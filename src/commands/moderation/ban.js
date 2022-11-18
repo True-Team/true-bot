@@ -1,13 +1,13 @@
 /* ========== BAN COMMAND ========== */
 // The command will permanently ban a user in the guild
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
+const { CommandType } = require('wokcommands');
 
 module.exports = {
   name: 'ban',
   category: 'Moderation',
   description: '👨‍⚖️Use this command to ban a user',
-  slash: true,
-  permissions: ['BAN_MEMBERS'],
+  type: CommandType.slash,
   options: [
     {
       name: 'user',
@@ -29,25 +29,25 @@ module.exports = {
     const reason = interaction.options.getString('reason');
     interaction.guild.members.ban(user, { reason: reason });
 
-    const Embed = new MessageEmbed()
-      .setColor('#66b032')
-      .setAuthor(
-        `Moderator: ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+    const Embed = new EmbedBuilder()
+      .setColor('ORANGE')
+      .setAuthor({
+        name: `Moderator: ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .setThumbnail(interaction.options.getUser('user').avatarURL())
-      .setFooter(
-        `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+      .setFooter({
+        text: `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .setTimestamp()
-      .addField(
-        'User banned from the guild',
-        `The user **${
+      .addFields({
+        name: 'User banned from the guild',
+        value: `The user **${
           interaction.options.getUser('user').username
         }** has been banned from the guild with the following reason:\n**${
           interaction.options.getString('reason') || 'No reason provided'
         }**`,
-        true
-      );
+        inline: true,
+      });
 
     await interaction.reply({ embeds: [Embed] });
   },

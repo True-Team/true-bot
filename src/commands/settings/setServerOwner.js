@@ -10,7 +10,6 @@ module.exports = {
   category: 'Settings',
   description: '👑Sets the owner for the current server',
   slash: true,
-  permissions: ['ADMINISTRATOR'],
   options: [
     {
       name: 'user',

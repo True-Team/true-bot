@@ -6,7 +6,6 @@ module.exports = {
   category: 'Utility',
   description: '🔒Close an existing ticket',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     await interaction.reply(

@@ -1,4 +1,4 @@
-const { MessageEmbed, CommandInteraction } = require('discord.js');
+const { EmbedBuilder, CommandInteraction } = require('discord.js');
 
 /**
  * Generates a random Embed for the trivia integration
@@ -23,7 +23,7 @@ async function createTriviaEmbed(interaction, name, value) {
     realValue = `**A:**\n**B:**\n**C:**\n**D: ${value}**`;
   }
 
-  const Embed = new MessageEmbed()
+  const Embed = new EmbedBuilder()
     .setAuthor(interaction.user.tag, interaction.user.avatarURL())
     .setColor('RANDOM')
     .setThumbnail(interaction.user.avatarURL())

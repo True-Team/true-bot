@@ -11,7 +11,6 @@ module.exports = {
   category: 'Settings',
   description: '🔧Removes the logging system',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
 
   callback: async ({ interaction }) => {
     async function main(guild) {

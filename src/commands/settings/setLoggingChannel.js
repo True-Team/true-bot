@@ -10,7 +10,6 @@ module.exports = {
   category: 'Settings',
   description: '👀Sets the logs channel of the guild',
   slash: true,
-  permissions: ['BAN_MEMBERS'],
   options: [
     {
       name: 'channel',

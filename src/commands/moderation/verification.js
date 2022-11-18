@@ -3,7 +3,7 @@
 // It will generate a random Captcha that the user has to
 // solve. After solving the captcha, the user will be verified
 // in the guild and will recive a Verified role.
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
 
@@ -29,13 +29,16 @@ module.exports = {
     const captchaPassword = superchargeString.random(10);
 
     //Seding the user the Catpcha to solve
-    const Embed = new MessageEmbed()
-      .setColor('BLUE')
-      .setAuthor(`${interaction.user.tag}`, interaction.user.avatarURL())
+    const Embed = new EmbedBuilder()
+      .setColor('Blue')
+      .setAuthor({
+        name: `${interaction.user.tag}`,
+        iconURL: interaction.user.avatarURL(),
+      })
       .setThumbnail(interaction.user.avatarURL())
-      .setFooter(
-        `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`
-      )
+      .setFooter({
+        text: `Invoked by ${interaction.user.username}#${interaction.user.discriminator}`,
+      })
       .setTimestamp()
       .addFields(
         {

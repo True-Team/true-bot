@@ -2,7 +2,11 @@
 // The ticket system helps admin an moderators
 // manage the issues in the server with an efficient
 // and fast system
-const { Permissions, MessageEmbed } = require('discord.js');
+const {
+  PermissionsBitField,
+  EmbedBuilder,
+  ChannelType,
+} = require('discord.js');
 const mongoose = require('mongoose');
 const Collection = require('../../models/guildSettings');
 
@@ -35,28 +39,28 @@ module.exports = {
     const ticketChannel = await interaction.guild.channels.create(
       `❗${interaction.user.tag}-ticket`,
       {
-        type: 'GUILD_TEXT',
+        type: ChannelType.GuildText,
         topic: String(userIssue),
         nsfw: false,
         permissionOverwrites: [
           {
             //Permissions for all the users in the server
             id: everyoneRole.id,
-            deny: [Permissions.FLAGS.VIEW_CHANNEL],
+            deny: [PermissionsBitField.Flahs.ViewChannel],
           },
           {
             //Permissions for the user and moderators
             id: interaction.user.id,
             allow: [
-              Permissions.FLAGS.SEND_MESSAGES,
-              Permissions.FLAGS.STREAM,
-              Permissions.FLAGS.VIEW_CHANNEL,
-              Permissions.FLAGS.EMBED_LINKS,
-              Permissions.FLAGS.READ_MESSAGE_HISTORY,
-              Permissions.FLAGS.ADD_REACTIONS,
-              Permissions.FLAGS.SEND_TTS_MESSAGES,
-              Permissions.FLAGS.ATTACH_FILES,
-              Permissions.FLAGS.USE_APPLICATION_COMMANDS,
+              PermissionsBitField.Flags.SendMessages,
+              PermissionsBitField.Flags.Stream,
+              PermissionsBitField.Flags.ViewChannel,
+              PermissionsBitField.Flags.EmbedLinks,
+              PermissionsBitField.Flags.ReadMessageHistory,
+              PermissionsBitField.Flags.AddReactions,
+              PermissionsBitField.Flags.SendTTSMessages,
+              PermissionsBitField.Flags.AttachFiles,
+              PermissionsBitField.Flags.UseApplicationCommands,
             ],
           },
         ],
@@ -69,11 +73,14 @@ module.exports = {
     );
 
     //Sending a quick resume for moderators
-    const Embed = new MessageEmbed()
+    const Embed = new EmbedBuilder()
       .setColor(interaction.user.hexAccentColor)
       .setTimestamp()
-      .setAuthor(interaction.user.tag, interaction.user.avatarURL())
-      .setFooter(`Invoked by ${interaction.user.tag}`)
+      .setAuthor({
+        name: interaction.user.tag,
+        iconURL: interaction.user.avatarURL(),
+      })
+      .setFooter({ text: `Invoked by ${interaction.user.tag}` })
       .setThumbnail(interaction.user.avatarURL())
       .addFields(
         {
