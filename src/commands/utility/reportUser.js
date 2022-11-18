@@ -70,7 +70,7 @@ module.exports = {
         const ownerID = interaction.guild.ownerId;
         const owner = interaction.guild.members.cache.get(parseInt(ownerID));
 
-        const Embed = new MessageEmbed()
+        const Embed = new EmbedBuilder()
           .setAuthor({
             name: interaction.user.tag,
             iconURL: interaction.user.avatarURL(),
