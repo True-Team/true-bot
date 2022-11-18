@@ -5,6 +5,9 @@ const path = require('path');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Collection = require('./src/models/guildSettings');
+const express = require('express');
+
+app = express();
 
 dotenv.config();
 
@@ -56,3 +59,5 @@ client.on('guildDelete', async (guild) => {
 });
 
 client.login(process.env.TOKEN);
+
+app.listen(8999, () => {});
