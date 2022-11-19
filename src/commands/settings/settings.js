@@ -58,7 +58,7 @@ module.exports = {
         .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields(
           {
             name: '🚄True Bot Systems',
@@ -91,7 +91,7 @@ module.exports = {
         .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields(
           {
             name: '🚄True Bot Systems',
@@ -122,7 +122,7 @@ module.exports = {
         .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields(
           {
             name: '🚄True Bot Systems',
@@ -154,7 +154,7 @@ module.exports = {
         .setColor('Orange')
         .setTimestamp()
         .setThumbnail(interaction.guild.iconURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields(
           {
             name: '🚄True Bot Systems',
@@ -259,15 +259,9 @@ module.exports = {
       });
     }
 
-    Collection.findOne(
-      { _id: interaction.guild.id },
-      async function (error, data) {
-        if (error) {
-          MissingDatabaseConnection(interaction);
-        } else {
-          main(data);
-        }
-      }
-    );
+    Collection.findOne({ _id: interaction.guild.id }).exec((error, data) => {
+      if (error) MissingDatabaseConnection(interaction);
+      else main(data);
+    });
   },
 };

@@ -87,15 +87,9 @@ module.exports = {
       }
     }
 
-    Collection.findOne(
-      { _id: interaction.guild.id },
-      async function (error, data) {
-        if (error) {
-          MissingDatabaseConnection(interaction);
-        } else {
-          main(data);
-        }
-      }
-    );
+    Collection.findOne({ _id: interaction.guild.id }).exec((error, data) => {
+      if (error) MissingDatabaseConnection(interaction);
+      else main(data);
+    });
   },
 };
