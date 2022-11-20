@@ -36,36 +36,34 @@ module.exports = {
     const userIssue = interaction.options.getString('issue');
 
     //Creating the ticket channel
-    const ticketChannel = await interaction.guild.channels.create(
-      `❗${interaction.user.tag}-ticket`,
-      {
-        type: ChannelType.GuildText,
-        topic: String(userIssue),
-        nsfw: false,
-        permissionOverwrites: [
-          {
-            //Permissions for all the users in the server
-            id: everyoneRole.id,
-            deny: [PermissionsBitField.Flahs.ViewChannel],
-          },
-          {
-            //Permissions for the user and moderators
-            id: interaction.user.id,
-            allow: [
-              PermissionsBitField.Flags.SendMessages,
-              PermissionsBitField.Flags.Stream,
-              PermissionsBitField.Flags.ViewChannel,
-              PermissionsBitField.Flags.EmbedLinks,
-              PermissionsBitField.Flags.ReadMessageHistory,
-              PermissionsBitField.Flags.AddReactions,
-              PermissionsBitField.Flags.SendTTSMessages,
-              PermissionsBitField.Flags.AttachFiles,
-              PermissionsBitField.Flags.UseApplicationCommands,
-            ],
-          },
-        ],
-      }
-    );
+    const ticketChannel = await interaction.guild.channels.create({
+      name: `❗${interaction.user.tag}-ticket`,
+      type: ChannelType.GuildText,
+      topic: String(userIssue),
+      nsfw: false,
+      permissionOverwrites: [
+        {
+          //Permissions for all the users in the server
+          id: everyoneRole.id,
+          deny: [PermissionsBitField.Flags.ViewChannel],
+        },
+        {
+          //Permissions for the user and moderators
+          id: interaction.user.id,
+          allow: [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.Stream,
+            PermissionsBitField.Flags.ViewChannel,
+            PermissionsBitField.Flags.EmbedLinks,
+            PermissionsBitField.Flags.ReadMessageHistory,
+            PermissionsBitField.Flags.AddReactions,
+            PermissionsBitField.Flags.SendTTSMessages,
+            PermissionsBitField.Flags.AttachFiles,
+            PermissionsBitField.Flags.UseApplicationCommands,
+          ],
+        },
+      ],
+    });
 
     //Sending the ticket confirm to the user
     await interaction.reply(
@@ -74,7 +72,7 @@ module.exports = {
 
     //Sending a quick resume for moderators
     const Embed = new EmbedBuilder()
-      .setColor(interaction.user.hexAccentColor)
+      .setColor('Blurple')
       .setTimestamp()
       .setAuthor({
         name: interaction.user.tag,

@@ -23,10 +23,10 @@ module.exports = {
       const result = await wiki.summary(interaction.options.getString('text'));
 
       const Embed = new EmbedBuilder()
-        .setColor('RANDOM')
+        .setColor('Random')
         .setTimestamp()
-        .setThumbnail(interaction.user.avatarURL())
-        .setFooter(`Invoked by ${interaction.user.tag}`)
+        .setThumbnail(result.thumbnail.source)
+        .setFooter({ text: `Invoked by ${interaction.user.tag}` })
         .addFields({
           name: result.title,
           value: result.extract,

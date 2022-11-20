@@ -22,12 +22,9 @@ module.exports = {
     const guildSettings = await Collection.findOne({
       _id: interaction.guild.id,
     });
-
     const verifiedRoleID = guildSettings.verifiedRole;
-
     const user = interaction.guild.members.resolve(interaction.user.id);
     const captchaPassword = superchargeString.random(10);
-
     //Seding the user the Catpcha to solve
     const Embed = new EmbedBuilder()
       .setColor('Blue')
@@ -51,9 +48,7 @@ module.exports = {
           value: `**\`\`\`arm\n${captchaPassword}\`\`\`**`,
         }
       );
-
     await interaction.reply({ embeds: [Embed], ephemeral: true });
-
     //Getting the user input from the message channel
     const filter = (m) => {
       return (
@@ -63,7 +58,6 @@ module.exports = {
     const collector = interaction.channel.createMessageCollector(filter, {
       time: 15000,
     });
-
     collector.on('collect', async (m) => {
       //Getting role and user
       const roleResolver = interaction.guild.roles.cache.find(
@@ -71,22 +65,18 @@ module.exports = {
       );
       const role = interaction.guild.roles.resolve(roleResolver);
       const user = interaction.guild.members.resolve(interaction.user.id);
-
       //Checking if the Captcha is right
       if (m.content === captchaPassword) {
         //Adding the role to the user
         user.roles.add(role);
-
         //Stopping collector
         collector.stop();
-
         await interaction.followUp(
           `Congrats ${interaction.user} you've completed the Captcha. You're now a verified member in the guild.`
         );
       } else {
         //Stopping collector
         collector.stop();
-
         //The Captcha is wrong
         await interaction.followUp(
           `${user} your Captcha is wrong. Please try again.`
